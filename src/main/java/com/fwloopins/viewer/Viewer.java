@@ -27,10 +27,10 @@ public final class Viewer extends JavaPlugin {
         Runnable particleTask = () -> {
             Collection<? extends Player> onlinePlayers = getServer().getOnlinePlayers();
             for (Player player : onlinePlayers) {
-                if (player.getGameMode().equals(GameMode.SPECTATOR)) return;
+                if (player.getGameMode().equals(GameMode.SPECTATOR)) continue; // Don't show particles to spectators
 
                 for (Player spectator : onlinePlayers.stream().filter(p -> p.getGameMode().equals(GameMode.SPECTATOR)).toList()) {
-                    if (player.hasPermission("viewer.exempt")) continue; // Don't reveal actual player
+                    if (spectator.hasPermission("viewer.exempt")) continue; // Don't reveal non-"viewer" players' position
                     player.spawnParticle(Particle.PORTAL, spectator.getLocation().add(0, 1.62, 0), 1);
                 }
             }
