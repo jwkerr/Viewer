@@ -1,0 +1,11 @@
+name: Viewer
+version: "${version}"
+main: com.fwloopins.viewer.Viewer
+api-version: "1.20"
+authors: [Fruitloopins]
+website: https://fwloopins.com
+
+permissions:
+  viewer.exempt:
+    default: false
+    description: Exempts players from being forced to spectate
