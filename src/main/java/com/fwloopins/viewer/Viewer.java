@@ -38,13 +38,13 @@ public final class Viewer extends JavaPlugin {
 
         Bukkit.getScheduler().runTaskTimer(this, particleTask, 0, 1);
 
-        Runnable forceSpecatorTask = () -> {
+        Runnable forceSpectatorTask = () -> {
             for (Player player : getServer().getOnlinePlayers()) {
                 if (!player.getGameMode().equals(GameMode.SPECTATOR) && !player.hasPermission("viewer.exempt"))
                     player.setGameMode(GameMode.SPECTATOR);
             }
         };
 
-        Bukkit.getScheduler().runTaskTimer(this, forceSpecatorTask, 0, 1);
+        Bukkit.getScheduler().runTaskTimer(this, forceSpectatorTask, 0, 1);
     }
 }
